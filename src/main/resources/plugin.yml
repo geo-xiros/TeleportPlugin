@@ -1,0 +1,15 @@
+name: TeleportPlugin
+version: 1.0.0
+main: me.george.plugin.TeleportPlugin
+api-version: 1.19
+description: A simple teleportation plugin for Minecraft.
+author: George
+commands:
+  tpgui:
+    description: Opens the teleport GUI
+    usage: /tpgui
+    permission: teleportplugin.teleport
+permissions:
+  teleportplugin.teleport:
+    description: Allows a player to use the teleport command.
+    default: true

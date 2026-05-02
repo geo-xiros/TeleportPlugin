@@ -1,0 +1,5 @@
+# TeleportPlugin configuration
+# List of available worlds for teleportation
+worlds:
+  - world
+  - map
