@@ -20,9 +20,19 @@ These destinations are hardcoded for now, but future updates will allow:
 - Automatic generation of GUI icons based on available worlds
 - Custom item names, lore, and icons
 
-### 🕹 Command
-**/teleportmenu**  
+### 🕹 Commands
+
+**/teleportmenu** (alias: **/tmmenu**)
 Opens the teleportation GUI for the player.
+
+**/teleportaddworld <worldname>** (alias: **/tpaw**)
+Adds a world to the teleport menu (admin/console only).
+
+**/teleportremoveworld <worldname>** (alias: **/tprw**)
+Removes a world from the teleport menu (admin/console only).
+
+**/teleportlistworlds** (alias: **/tplw**)
+Lists all available worlds for teleportation.
 
 ### 📦 Installation
 1. Download the latest version from the Modrinth page.
