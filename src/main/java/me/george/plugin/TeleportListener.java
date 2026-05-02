@@ -4,6 +4,7 @@ package me.george.plugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.entity.Player;
@@ -11,6 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataType;
 
 import net.kyori.adventure.text.Component;
 
@@ -34,23 +36,27 @@ public class TeleportListener implements Listener {
             return;
         }
 
-        Material type = item.getType();
-
         // Prevent taking the item out of the chest
         event.setCancelled(true);
-        
 
-        // Teleport based on item type
-        if (type == Material.COMPASS) {
-            teleportToWorld(player, "map");
+        // Get the world name from the item's persistent data container
+        if (!item.hasItemMeta() || !item.getItemMeta().hasDisplayName()) {
+            return;
         }
 
-        if (type == Material.CLOCK) {
-            teleportToWorld(player, "world");
+        var meta = item.getItemMeta();
+        var pdc = meta.getPersistentDataContainer();
+        if (!pdc.has(TeleportGUI.worldNameKey, PersistentDataType.STRING)) {
+            return;
         }
 
-        // log type of item clicked for debugging
-        Bukkit.getLogger().info("Player " + player.getName() + " clicked on item of type: " + type);
+        String worldName = pdc.get(TeleportGUI.worldNameKey, PersistentDataType.STRING);
+        if (worldName == null) {
+            return;
+        }
+
+        teleportToWorld(player, worldName);
+        Bukkit.getLogger().info("Player " + player.getName() + " clicked to teleport to world: " + worldName);
     }
 
     private void teleportToWorld(Player player, String worldName) {
@@ -72,8 +78,10 @@ public class TeleportListener implements Listener {
 
         Location loc = world.getSpawnLocation();
 
-        player.teleport(loc);
-        player.sendMessage("Teleported to world: " + worldName);
+        if(player.teleport(loc)) {
+            player.sendMessage("Teleported to world: " + worldName);
+        } else {
+            player.sendMessage("Failed to teleport to world: " + worldName);
+        }
     }
-
 }

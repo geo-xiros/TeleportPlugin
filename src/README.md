@@ -3,7 +3,7 @@
 TeleportGUI is a lightweight Paper plugin that provides a simple and intuitive GUI-based teleportation system.
 
 ### ✨ Features
-- Opens a custom GUI menu using `/tpgui`
+- Opens a custom GUI menu using `/teleportmenu`
 - GUI contains icons (Compass, Clock) representing teleport destinations
 - Clicking an icon teleports the player to a specific world
 - Fast, clean, and minimal implementation
@@ -21,7 +21,7 @@ These destinations are hardcoded for now, but future updates will allow:
 - Custom item names, lore, and icons
 
 ### 🕹 Command
-**/tpgui**  
+**/teleportmenu**  
 Opens the teleportation GUI for the player.
 
 ### 📦 Installation
