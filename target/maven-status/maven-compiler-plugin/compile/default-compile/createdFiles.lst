@@ -1,7 +1,1 @@
-me/george/plugin/commands/TeleportRemoveWorldCommand.class
-me/george/plugin/commands/TeleportMenuCommand.class
-me/george/plugin/commands/TeleportAddWorldCommand.class
-me/george/plugin/commands/TeleportListWorldsCommand.class
-me/george/plugin/TeleportGUI.class
-me/george/plugin/TeleportListener.class
-me/george/plugin/TeleportPlugin.class
+me/george/plugin/teleportMenu/TeleportMenuHolder.class

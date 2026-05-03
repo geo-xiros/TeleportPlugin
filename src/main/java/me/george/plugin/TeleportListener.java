@@ -1,10 +1,8 @@
-
 package me.george.plugin;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.entity.Player;
@@ -13,8 +11,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
-
-import net.kyori.adventure.text.Component;
+import me.george.plugin.teleportMenu.TeleportGUI;
+import me.george.plugin.teleportMenu.TeleportMenuHolder;
 
 public class TeleportListener implements Listener {
 
@@ -24,9 +22,13 @@ public class TeleportListener implements Listener {
             return;
         }
 
-        // Only handle our custom GUI
-        if (!event.getView().title().equals(Component.text("Teleport Menu"))) {
-            Bukkit.getLogger().info("Not our GUI, ignoring click event.");
+        if (event.getClickedInventory() == null) {
+            Bukkit.getLogger().info("Clicked inventory is null, ignoring click event.");
+            return;
+        }
+
+        if (!(event.getClickedInventory().getHolder() instanceof TeleportMenuHolder)) {
+            Bukkit.getLogger().info("Clicked inventory is not our TeleportMenuHolder, ignoring click event.");
             return;
         }
 
@@ -78,7 +80,7 @@ public class TeleportListener implements Listener {
 
         Location loc = world.getSpawnLocation();
 
-        if(player.teleport(loc)) {
+        if (player.teleport(loc)) {
             player.sendMessage("Teleported to world: " + worldName);
         } else {
             player.sendMessage("Failed to teleport to world: " + worldName);

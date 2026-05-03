@@ -1,4 +1,4 @@
-package me.george.plugin;
+package me.george.plugin.teleportMenu;
 
 import java.util.List;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -11,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
+import me.george.plugin.TeleportPlugin;
 import net.kyori.adventure.text.Component;
 
 public class TeleportGUI {
@@ -21,12 +22,12 @@ public class TeleportGUI {
         FileConfiguration config = TeleportPlugin.getInstance().getConfig();
         List<String> worlds = config.getStringList("worlds");
         int size = Math.max(9, ((worlds.size() + 8) / 9) * 9); // round up to nearest 9
-        Inventory inv = Bukkit.createInventory((org.bukkit.inventory.InventoryHolder) null, size,
+        Inventory inv = Bukkit.createInventory(new TeleportMenuHolder(), size,
                 Component.text("Teleport Menu"));
 
         int slot = 0;
         for (String world : worlds) {
-            Material mat = Material.COMPASS;// world.equals(currentWorld) ? Material.CLOCK : Material.COMPASS;
+            Material mat = Material.COMPASS;
             ItemStack item = new ItemStack(mat);
             ItemMeta meta = item.getItemMeta();
             if (world.equals(currentWorld)) {
