@@ -1,8 +1,0 @@
-/workspaces/TeleportPlugin/src/main/java/me/george/plugin/TeleportListener.java
-/workspaces/TeleportPlugin/src/main/java/me/george/plugin/TeleportPlugin.java
-/workspaces/TeleportPlugin/src/main/java/me/george/plugin/commands/TeleportAddWorldCommand.java
-/workspaces/TeleportPlugin/src/main/java/me/george/plugin/commands/TeleportListWorldsCommand.java
-/workspaces/TeleportPlugin/src/main/java/me/george/plugin/commands/TeleportMenuCommand.java
-/workspaces/TeleportPlugin/src/main/java/me/george/plugin/commands/TeleportRemoveWorldCommand.java
-/workspaces/TeleportPlugin/src/main/java/me/george/plugin/teleportMenu/TeleportGUI.java
-/workspaces/TeleportPlugin/src/main/java/me/george/plugin/teleportMenu/TeleportMenuHolder.java
